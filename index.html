@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Portfolio | Neural Link Established</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        :root {
+            --neon-cyan: #00f7ff;
+            --neon-magenta: #ff00ff;
+            --neon-yellow: #f39c12;
+            --bg-dark: #0a0a0c;
+            --card-bg: #16161a;
+            --text-main: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        /* Light Mode Overrides */
+        [data-bs-theme="light"] {
+            --bg-dark: #f4f4f9;
+            --card-bg: #ffffff;
+            --text-main: #0a0a0c;
+            --neon-cyan: #007bff;
+            --neon-magenta: #d63384;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+            transition: var(--transition);
+        }
+
+        h1, h2, h3, .nav-link {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Navbar Custom */
+        .navbar {
+            background: rgba(10, 10, 12, 0.9) !important;
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--neon-cyan);
+        }
+        [data-bs-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.9) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding: 120px 0 80px;
+            background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,247,255,0.1));
+        }
+        .profile-img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border: 4px solid var(--neon-cyan);
+            box-shadow: 0 0 20px var(--neon-cyan);
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
+        }
+
+        /* Cyber Cards */
+        .cyber-card {
+            background: var(--card-bg);
+            border: 1px solid var(--neon-cyan);
+            border-radius: 0;
+            transition: var(--transition);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        .cyber-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+        .card-img-top {
+            border-bottom: 2px solid var(--neon-cyan);
+            filter: grayscale(40%);
+        }
+        .cyber-card:hover .card-img-top {
+            filter: grayscale(0%);
+        }
+
+        /* Badges & Buttons */
+        .btn-cyber {
+            border: 2px solid var(--neon-magenta);
+            color: var(--neon-magenta);
+            background: transparent;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 0;
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+        }
+        .btn-cyber:hover {
+            background: var(--neon-magenta);
+            color: white;
+            box-shadow: 0 0 15px var(--neon-magenta);
+        }
+
+        .tech-badge {
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 5px 15px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        /* Filters */
+        .filter-btn {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: 1px solid var(--neon-yellow);
+            color: var(--neon-yellow);
+            margin: 5px;
+            transition: var(--transition);
+        }
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--neon-yellow);
+            color: #000;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 2px solid var(--neon-magenta);
+            padding: 40px 0;
+            background: #050505;
+        }
+        .social-icon {
+            font-size: 1.5rem;
+            color: var(--neon-cyan);
+            margin: 0 15px;
+            transition: var(--transition);
+        }
+        .social-icon:hover {
+            color: var(--neon-magenta);
+            text-shadow: 0 0 10px var(--neon-magenta);
+        }
+
+        #scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--neon-cyan);
+            color: #000;
+            border: none;
+            padding: 10px 15px;
+            display: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="color: var(--neon-cyan);">USER_PORTFOLIO v1.0</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#proyectos">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experiencia">Experiencia</a></li>
+                    <li class="nav-item ms-lg-3">
+                        <button class="btn btn-outline-info" id="themeToggle">
+                            <i class="fas fa-moon"></i> MODO
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center text-center text-md-start">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <img src="img/perfil.jpg"/400x400?text=PHOTO_DE_PERFIL" alt="Perfil" class="profile-img img-fluid">
+                </div>
+                <div class="col-md-8">
+                    <h1 class="display-4 fw-bold mb-3" style="color: var(--neon-cyan);">Neural Interface <span style="color: var(--neon-magenta);">Activated</span></h1>
+                    <p class="lead mb-4">Soy un Desarrollador Fullstack apasionado por crear experiencias digitales inmersivas y arquitecturas de código limpio bajo estéticas futuristas.</p>
+                    <div id="stack">
+                        <span class="tech-badge"><i class="fab fa-html5"></i> HTML5</span>
+                        <span class="tech-badge"><i class="fab fa-css3-alt"></i> CSS3</span>
+                        <span class="tech-badge"><i class="fab fa-js"></i> JavaScript</span>
+                        <span class="tech-badge"><i class="fab fa-bootstrap"></i> Bootstrap</span>
+                        <span class="tech-badge"><i class="fab fa-react"></i> React</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--neon-yellow);">Operaciones_Recientes / Proyectos</h2>
+            
+            <div class="d-flex justify-content-center flex-wrap mb-5">
+                <div class="filter-btn active" onclick="filterSelection('all')">TODO</div>
+                <div class="filter-btn" onclick="filterSelection('web')">WEB</div>
+                <div class="filter-btn" onclick="filterSelection('app')">APP</div>
+                <div class="filter-btn" onclick="filterSelection('diseno')">DISEÑO</div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4 filter-card web">
+                    <div class="card cyber-card">
+                        <img src="img/web1.jpg"/600x400/00f7ff/000?text=PORTADA_WEB_1" class="card-img-top" alt="Web 1">
+                        <div class="card-body">
+                            <h5 class="card-title text-cyan">Sistema de Gestión Web</h5>
+                            <p class="card-text small text-secondary">Dashboard futurista para control de datos masivos.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card web">
+                    <div class="card cyber-card">
+                        <img src="img/web2.jpg"/600x400/00f7ff/000?text=PORTADA_WEB_2" class="card-img-top" alt="Web 2">
+                        <div class="card-body">
+                            <h5 class="card-title text-cyan">E-commerce Cyber</h5>
+                            <p class="card-text small text-secondary">Tienda online con pasarela de pagos segura.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card web">
+                    <div class="card cyber-card">
+                        <img src="img/web3.jpg"/600x400/00f7ff/000?text=PORTADA_WEB_3" class="card-img-top" alt="Web 3">
+                        <div class="card-body">
+                            <h5 class="card-title text-cyan">Portal Corporativo</h5>
+                            <p class="card-text small text-secondary">Landing page de alto impacto visual.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card app">
+                    <div class="card cyber-card">
+                        <img src="img/app1.jpg"/600x400/ff00ff/000?text=PORTADA_APP_1" class="card-img-top" alt="App 1">
+                        <div class="card-body">
+                            <h5 class="card-title text-magenta">Neural App Mobile</h5>
+                            <p class="card-text small text-secondary">Aplicación de rastreo biométrico.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card app">
+                    <div class="card cyber-card">
+                        <img src="img/app2.jpg"/600x400/ff00ff/000?text=PORTADA_APP_2" class="card-img-top" alt="App 2">
+                        <div class="card-body">
+                            <h5 class="card-title text-magenta">Cripto-Wallet</h5>
+                            <p class="card-text small text-secondary">Billetera digital para activos en la red.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card app">
+                    <div class="card cyber-card">
+                        <img src="img/app3.jpg"/600x400/ff00ff/000?text=PORTADA_APP_3" class="card-img-top" alt="App 3">
+                        <div class="card-body">
+                            <h5 class="card-title text-magenta">Messenger App</h5>
+                            <p class="card-text small text-secondary">Chat encriptado punto a punto.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card diseno">
+                    <div class="card cyber-card">
+                        <img src="img/diseno1.jpg"/600x400/f39c12/000?text=PORTADA_DISENO_1" class="card-img-top" alt="D1">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">Brand Identity</h5>
+                            <p class="card-text small text-secondary">Diseño de marca para corporación tech.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card diseno">
+                    <div class="card cyber-card">
+                        <img src="img/diseno2.jpg"/600x400/f39c12/000?text=PORTADA_DISENO_2" class="card-img-top" alt="D2">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">UI/UX Interface</h5>
+                            <p class="card-text small text-secondary">Prototipo de alta fidelidad en Figma.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 filter-card diseno">
+                    <div class="card cyber-card">
+                        <img src="img/diseno3.jpg"/600x400/f39c12/000?text=PORTADA_DISENO_3" class="card-img-top" alt="D3">
+                        <div class="card-body">
+                            <h5 class="card-title text-warning">Concept Art</h5>
+                            <p class="card-text small text-secondary">Ilustración digital para entorno VR.</p>
+                            <a href="#" class="btn btn-cyber w-100">Ver Enlace</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencia" class="py-5 bg-black">
+        <div class="container">
+            <h2 class="text-center mb-5" style="color: var(--neon-cyan);">Trayectoria_Laboral</h2>
+            <div class="row justify-content-center g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="card cyber-card text-center p-3">
+                        <img src="img/exp1.jpg"/100x100?text=EXP_1" class="rounded-circle mx-auto mt-3" style="width: 80px; border: 2px solid var(--neon-magenta);" alt="Exp 1">
+                        <div class="card-body">
+                            <h5 class="text-magenta">Lead Developer</h5>
+                            <p class="small">Arasaka Corp | 2022 - 2024</p>
+                            <p class="card-text text-secondary">Optimización de bases de datos y desarrollo de interfaces neuronales.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card cyber-card text-center p-3">
+                        <img src="img/exp2.jpg"/100x100?text=EXP_2" class="rounded-circle mx-auto mt-3" style="width: 80px; border: 2px solid var(--neon-magenta);" alt="Exp 2">
+                        <div class="card-body">
+                            <h5 class="text-magenta">UI Designer</h5>
+                            <p class="small">Militech | 2020 - 2022</p>
+                            <p class="card-text text-secondary">Diseño de sistemas críticos de visualización de datos tácticos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="card cyber-card text-center p-3">
+                        <img src="img/exp3.jpg"/100x100?text=EXP_3" class="rounded-circle mx-auto mt-3" style="width: 80px; border: 2px solid var(--neon-magenta);" alt="Exp 3">
+                        <div class="card-body">
+                            <h5 class="text-magenta">Junior Dev</h5>
+                            <p class="small">Freelance Net | 2018 - 2020</p>
+                            <p class="card-text text-secondary">Desarrollo de scripts automatizados y mantenimiento web.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <div class="mb-4">
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="text-white">CONECTADO AL NODO CENTRAL &copy; 2024</p>
+            <button id="scroll-top" onclick="window.scrollTo(0,0)"><i class="fas fa-arrow-up"></i></button>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Lógica de Modo Dark/Light
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-bs-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            html.setAttribute('data-bs-theme', newTheme);
+            
+            // Cambiar icono
+            const icon = themeToggle.querySelector('i');
+            icon.className = newTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+        });
+
+        // Lógica de Filtros de Proyectos
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("filter-card");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                x[i].classList.remove("d-block");
+                x[i].classList.add("d-none");
+                if (x[i].className.indexOf(c) > -1) {
+                    x[i].classList.add("d-block");
+                    x[i].classList.remove("d-none");
+                }
+            }
+            // Botón activo
+            var btns = document.getElementsByClassName("filter-btn");
+            for (var i = 0; i < btns.length; i++) {
+                btns[i].addEventListener("click", function(){
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        }
+
+        // Mostrar botón Volver Arriba
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                document.getElementById("scroll-top").style.display = "block";
+            } else {
+                document.getElementById("scroll-top").style.display = "none";
+            }
+        };
+
+        // Iniciar con todos los proyectos visibles
+        filterSelection('all');
+    </script>
+</body>
+</html>
